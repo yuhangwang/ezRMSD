@@ -9,19 +9,12 @@ tasks:
   default:
     cmds:
       - task: test1
-      - task: test2
-      - task: test3
+      # - task: test2
 
   test1:
     cmds:
-      - tclsh test1.tcl
+      - vmd -dispdev text -e test1.tcl
 
   test2:
     cmds:
-      - tclsh test2.tcl
-
-
-  test3:
-    cmds:
-      - tclsh test3.tcl
-
+      - vmd -dispdev text -e test2.tcl

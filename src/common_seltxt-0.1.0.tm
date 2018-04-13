@@ -12,7 +12,17 @@
 ## Return (str): an atom selection string
 ## =====================================================
 proc ::rmsd::common_seltxt {id1 seltxt1 id2 seltxt2} {
-    set sel1 [atomselect $id1 "$seltxt1"]
-    set sel2 [atomselect $id1 "$seltxt2"]
-
+    set commonChainIDs [::rmsd::common_chains $id1 $seltxt1 $id2 $seltxt2]
+    set resDict [::rmsd::common_residues \
+        $id1 $seltxt1 $id2 $seltxt2 \
+        $commonChainIDs \
+    ]
+    set output {}
+    foreach chainId [::dict keys $resDict] {
+        set resIDs [::dict get $resDict $chainId]
+        if {[llength $resIDs] > 0} {
+            lappend output "(chain $chainId and resid [join $resIDs])"
+        }
+    }
+    return [join $output " or "]
 }

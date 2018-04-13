@@ -8,8 +8,8 @@
 ## id2 (int): molecule ID for the second molecule
 ## seltxt2 (str): atom selection string for the second molecule
 ## ========================================================
-## Returns (str): an atom selection string for chain IDs
-##  e.g. "chain A B D"
+## Returns ([str]): a list of chain IDs
+##  e.g. {A B C}
 ## ========================================================
 proc ::rmsd::common_chains {id1 seltxt1 id2 seltxt2} {
     set sel1 [atomselect $id1 "$seltxt1"]

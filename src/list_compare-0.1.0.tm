@@ -8,15 +8,15 @@
 ## ==========================================================
 ## Returns (bool): true or false
 ## ==========================================================
-namespace eval ::list {
+namespace eval ::_::list {
     namespace export compare
     namespace ensemble create
 }
 
-proc ::list::compare {list1 list2} {
+proc ::_::list::compare {list1 list2} {
     set s1 [lsort -ascii $list1]
     set s2 [lsort -ascii $list2]
-    if {[concat $s1] == [concat $s2]} {
+    if {[join $s1] == [join $s2]} {
         return true
     } else {
         return false

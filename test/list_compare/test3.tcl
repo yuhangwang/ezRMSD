@@ -2,8 +2,8 @@
 package require list_compare
 
 proc test {} {
-    set list1 {1 2}
-    set list2 {2 3}
+    set list1 {AB CD}
+    set list2 {A B C D}
     set expected false
     if {[::_::list compare $list1 $list2] == $expected} {
         puts "PASS!"
