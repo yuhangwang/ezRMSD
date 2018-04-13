@@ -1,5 +1,5 @@
 ::tcl::tm::path add [file join ".." ".." "src"]
-package require ezRMSD
+package require rmsd
 package require load_molecule
 
 proc test {} {
@@ -8,11 +8,11 @@ proc test {} {
     set seltxt "all"
     set expected "chain B C"
 
-    set answer [::ezRMSD::common_chains $id1 $seltxt $id2 $seltxt]
+    set answer [::rmsd::common_chains $id1 $seltxt $id2 $seltxt]
     if {$answer == $expected} {
-        puts "PASS!"
+        puts ">>> PASS!"
     } else {
-        puts "FAILED!"
+        puts ">>> FAILED!"
         puts "answer = $answer"
         puts "expected = $expected"
     }

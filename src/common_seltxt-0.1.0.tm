@@ -11,7 +11,7 @@
 ## =====================================================
 ## Return (str): an atom selection string
 ## =====================================================
-proc ::ezRMSD::common_seltxt {id1 seltxt1 id2 seltxt2} {
+proc ::rmsd::common_seltxt {id1 seltxt1 id2 seltxt2} {
     set sel1 [atomselect $id1 "$seltxt1"]
     set sel2 [atomselect $id1 "$seltxt2"]
 
