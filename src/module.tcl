@@ -1,2 +1,2 @@
-namespace eval ::ezRMSD {ez-align ez-rmsd}
-
+package require common_seltxt
+package require ez_align
