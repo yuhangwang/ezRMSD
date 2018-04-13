@@ -1,2 +1,0 @@
-package require common_seltxt
-package require ez_align
