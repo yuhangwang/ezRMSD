@@ -20,8 +20,8 @@ proc ::rmsd::common_chains {id1 seltxt1 id2 seltxt2} {
     $sel1 delete
     $sel2 delete
     if {[llength $commonIDs] == 0} {
-        return {}
+        return "none"
     } else {
-        return $commonIDs
+        return "chain [concat $commonIDs]"
     }
-}
+ }

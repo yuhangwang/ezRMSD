@@ -6,7 +6,7 @@ proc test {} {
     set id1 [::umolflow::loadMolecule "input/p1.pdb"]
     set id2 [::umolflow::loadMolecule "input/p2.pdb"]
     set seltxt "all"
-    set expected "chain B C"
+    set expected {B C}
 
     set answer [::rmsd::common_chains $id1 $seltxt $id2 $seltxt]
     if {$answer == $expected} {
