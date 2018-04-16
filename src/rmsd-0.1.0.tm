@@ -4,6 +4,7 @@ namespace eval ::rmsd {
     namespace export calc
     namespace eval calc {
         namespace export all
+        namespace export res
         namespace ensemble create
     }
     namespace ensemble create
@@ -17,3 +18,4 @@ package require common_part
 package require rmsd_seltxt
 package require rmsd_align
 package require rmsd_calc_all
+package require rmsd_calc_res

@@ -18,11 +18,15 @@ proc ::rmsd::calc::all {id1 seltxt1 id2 seltxt2 {do_align true}} {
         $target move [::measure fit $target $ref]
     }
     set output [::measure rmsd $target $ref]
+    
     $target delete
     $ref delete
+
     puts "=============================="
     puts "Atoms chosen:"
     puts "------------------------------"
     puts $seltxt_common
+    puts ""
+    
     return $output
 }
