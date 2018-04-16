@@ -12,13 +12,18 @@
 ## ========================================================
 ## Returns (dict(str: [int])): a dict of residue IDs for each chain
 ## ========================================================
-proc ::rmsd::common_residues {id1 seltxt1 id2 seltxt2 dict_chain_residue} {
+proc ::rmsd::common_atoms {id1 seltxt1 id2 seltxt2 dict_chain_residue} {
     set output {}
 
     dict for {chainId resIdList} $dict_chain_residue {
+        
         foreach resId $resIdList {
             set sel1 [atomselect $id1 "($seltxt1) and chain $chainId and resid $resId"]
             set sel2 [atomselect $id2 "($seltxt2) and chain $chainId and resid $resId"]
+            set names1 [lsort [$sel1 get name]]
+            set names2 [lsort [$sel2 get name]]
+            set common_names [::struct::set intersect $names1 $names2]
+            lappend output $chainId
         }
     }
     foreach chainId $chainIDs {

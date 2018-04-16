@@ -13,15 +13,14 @@
 ## Returns (dict(str: [int])): a dict of residue IDs for each chain
 ## ========================================================
 proc ::rmsd::common_residues {id1 seltxt1 id2 seltxt2 chainIDs} {
-    set output {}
+    set output [dict create]
     foreach chainId $chainIDs {
         set sel1 [atomselect $id1 "($seltxt1) and chain $chainId"]
         set sel2 [atomselect $id2 "($seltxt2) and chain $chainId"]
         set IDs1 [lsort -unique [$sel1 get resid]]
         set IDs2 [lsort -unique [$sel2 get resid]]
         set commonIDs [::struct::set intersect $IDs1 $IDs2]
-        lappend output $chainId 
-        lappend output $commonIDs
+        dict set output $chainId  $commonIDs
         $sel1 delete
         $sel2 delete
     }
