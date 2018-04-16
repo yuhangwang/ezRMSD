@@ -17,5 +17,9 @@ proc ::rmsd::calc::all {id1 seltxt1 id2 seltxt2} {
     set output [::measure rmsd $target $ref]
     $target delete
     $ref delete
+    puts "=============================="
+    puts "Atoms chosen:"
+    puts "------------------------------"
+    puts $seltxt_common
     return $output
 }
