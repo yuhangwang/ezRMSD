@@ -13,7 +13,7 @@ tasks:
 
   test1:
     cmds:
-      - vmd -dispdev text -e test1.tcl
+      - tclsh test1.tcl
 
   test2:
     cmds:
