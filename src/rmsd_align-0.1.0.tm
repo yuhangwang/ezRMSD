@@ -16,4 +16,5 @@ proc ::rmsd::align {id1 seltxt1 id2 seltxt2} {
     $target move [::measure fit $target $ref]
     $target delete
     $ref delete
+    return [list $ref $target]
 }
