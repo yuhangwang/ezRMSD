@@ -2,6 +2,7 @@ namespace eval ::rmsd {}
 package require set_intersect
 package require common_chains
 package require common_residues
+package require common_atoms
 package require common_seltxt
 package require rmsd_align
 

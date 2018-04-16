@@ -8,34 +8,24 @@
 ## seltxt1 (str): atom selection string for the first molecule
 ## id2 (int): molecule ID for the second molecule
 ## seltxt2 (str): atom selection string for the second molecule
-## chainIDs ([str]): a list of chain IDs
+## dict_chain_residue ({str: [int]}): a dictionary of chain ID => residue IDs
 ## ========================================================
 ## Returns (dict(str: [int])): a dict of residue IDs for each chain
 ## ========================================================
 proc ::rmsd::common_atoms {id1 seltxt1 id2 seltxt2 dict_chain_residue} {
-    set output {}
+    set output [dict create]
 
     dict for {chainId resIdList} $dict_chain_residue {
-        
+        set dict_resId_resName [dict create]
         foreach resId $resIdList {
             set sel1 [atomselect $id1 "($seltxt1) and chain $chainId and resid $resId"]
             set sel2 [atomselect $id2 "($seltxt2) and chain $chainId and resid $resId"]
-            set names1 [lsort [$sel1 get name]]
-            set names2 [lsort [$sel2 get name]]
+            set names1 [$sel1 get name]
+            set names2 [$sel2 get name]
             set common_names [::struct::set intersect $names1 $names2]
-            lappend output $chainId
+            dict set dict_resId_resName $resId $common_names 
         }
-    }
-    foreach chainId $chainIDs {
-        set sel1 [atomselect $id1 "($seltxt1) and chain $chainId"]
-        set sel2 [atomselect $id2 "($seltxt2) and chain $chainId"]
-        set IDs1 [lsort -unique [$sel1 get resid]]
-        set IDs2 [lsort -unique [$sel2 get resid]]
-        set commonIDs [::struct::set intersect $IDs1 $IDs2]
-        lappend output $chainId 
-        lappend output $commonIDs
-        $sel1 delete
-        $sel2 delete
+        dict set output $chainId $dict_resId_resName
     }
     return $output
  }
