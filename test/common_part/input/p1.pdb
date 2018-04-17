@@ -1,9 +1,9 @@
 ATOM      1  N   PRO A   1       1.591   1.168   1.437  1.00  0.00      A    N
 ATOM      1  CA  PRO A   1       1.591   1.168   1.437  1.00  0.00      A    N
-ATOM      1  N   PRO A   2       1.591   1.168   1.437  1.00  0.00      A    N
-ATOM      1  CA  PRO A   2       1.591   1.168   1.437  1.00  0.00      A    N
-ATOM      1  C   PRO A   2       1.591   1.168   1.437  1.00  0.00      A    N
-ATOM      1  CA  PRO A   3       1.591   1.168   1.437  1.00  0.00      A    N
+ATOM      1  N   ALA A   2       1.591   1.168   1.437  1.00  0.00      A    N
+ATOM      1  CA  ALA A   2       1.591   1.168   1.437  1.00  0.00      A    N
+ATOM      1  C   ALA A   2       1.591   1.168   1.437  1.00  0.00      A    N
+ATOM      1  CA  SER A   3       1.591   1.168   1.437  1.00  0.00      A    N
 ATOM      2  N   PRO B   1       2.591   2.168   2.437  1.00  0.00      A    N
 ATOM      2  CA  PRO B   1       2.591   2.168   2.437  1.00  0.00      A    N
 ATOM      2  N   PRO C   1       2.591   2.168   2.437  1.00  0.00      A    N

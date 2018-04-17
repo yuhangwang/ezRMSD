@@ -9,15 +9,15 @@ proc test {} {
     set seltxt "all"
     set expected [dict create \
         A [dict create \
-            1 {N CA} \
-            2 {CA C} \
-            3 {CA} \
+            {1 PRO} {N CA} \
+            {2 ALA} {CA C} \
+            {3 SER} {CA} \
             ]\
         B [dict create \
-            1 {N CA} \
+            {1 PRO} {N CA} \
             ] \
         C [dict create \
-            1 {C} \
+            {1 PRO} {C} \
             ] \
     ]
 
