@@ -10,7 +10,7 @@
 ## seltxt2 (str): atom selection string for the second molecule
 ## dict_chain_residue ({str: [int]}): a dictionary of chain ID => residue IDs
 ## ========================================================
-## Returns (dict(str: [int])): a dict of residue IDs for each chain
+## Returns: a dictionary of chainID:(residue_ID, residue_name):[atom_names]
 ## ========================================================
 proc ::rmsd::common_atoms {id1 seltxt1 id2 seltxt2 dict_chain_residue} {
     set output [dict create]
@@ -22,8 +22,16 @@ proc ::rmsd::common_atoms {id1 seltxt1 id2 seltxt2 dict_chain_residue} {
             set sel2 [atomselect $id2 "($seltxt2) and chain $chainId and resid $resId"]
             set names1 [$sel1 get name]
             set names2 [$sel2 get name]
-            set common_names [::struct::set intersect $names1 $names2]
-            dict set dict_resId_resName $resId $common_names 
+            set resname1 [::lindex [$sel1 get resname] 0]
+            set resname2 [::lindex [$sel2 get resname] 0]
+            if {$resname1 == $resname2} {
+                set common_names [::struct::set intersect $names1 $names2]
+                dict set dict_resId_resName [::list $resId $resname1] $common_names 
+            } else {
+                puts ">>> ERROR HINT: two corresponding residues should have the same residue type"
+                puts ">>> selection 1: \"$chainId:$resId is $resname1\""
+                puts ">>> selection 2: \"$chainId:$resId is $resname2\""
+            }
         }
         dict set output $chainId $dict_resId_resName
     }
