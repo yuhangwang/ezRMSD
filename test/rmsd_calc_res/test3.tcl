@@ -8,8 +8,8 @@ proc test {} {
     set id2 [::umolflow::loadMolecule "input/p6.pdb"]
     set seltxt "all"
     set expected [dict create \
-        A [dict create 1 0.5 2 0.5] \
-        B [dict create 1 0.5] \
+        A [dict create {1 PRO} 0.5 {2 PRO} 0.5] \
+        B [dict create {1 PRO} 0.5] \
     ]
 
     set answer [rmsd calc res $id1 $seltxt $id2 $seltxt]
