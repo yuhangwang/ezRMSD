@@ -23,9 +23,10 @@ proc ::rmsd::seltxt {d} {
     dict for {chain_id res_dict} $d {
         if {[dict size $res_dict] > 0} {
             set tmp {}
-            dict for {res_id atom_name_list} $res_dict {
+            dict for {resid_resname atom_name_list} $res_dict {
                 if {[llength $atom_name_list] > 0} {
-                    lappend tmp "(resid $res_id and name [join $atom_name_list])"
+                    lassign $resid_resname res_id res_name
+                    lappend tmp "(resid $res_id and resname $res_name and name [join $atom_name_list])"
                 } else {}
             }
             if {[llength $tmp] > 0} {
