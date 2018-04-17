@@ -19,3 +19,4 @@ package require rmsd_seltxt
 package require rmsd_align
 package require rmsd_calc_all
 package require rmsd_calc_res
+package require rmsd_dict_to_list
