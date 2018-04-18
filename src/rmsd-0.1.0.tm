@@ -37,4 +37,5 @@ package require rmsd_calc_res
 package require rmsd_d2l_all
 package require rmsd_d2l_chain
 package require rmsd_io_read_cfg
+package require rmsd_main
 package require rmsd_run
