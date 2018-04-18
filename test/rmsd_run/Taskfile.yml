@@ -12,5 +12,5 @@ tasks:
 
   test1:
     cmds:
-      -  tclsh test1.tcl
+      -  vmd -dispdev text -e test1.tcl
 

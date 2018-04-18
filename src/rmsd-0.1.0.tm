@@ -3,6 +3,7 @@ namespace eval ::rmsd {
     namespace export align
     namespace export calc
     namespace export run
+    namespace ensemble create
     namespace eval calc {
         namespace export all
         namespace export res
@@ -16,7 +17,6 @@ namespace eval ::rmsd {
         namespace export read
         namespace ensemble create
     }
-    namespace ensemble create
 }
 
 package require fmap
@@ -37,3 +37,4 @@ package require rmsd_calc_res
 package require rmsd_d2l_all
 package require rmsd_d2l_chain
 package require rmsd_io_read_cfg
+package require rmsd_run

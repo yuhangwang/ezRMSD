@@ -1,9 +1,9 @@
 output: output/cfg1.dat
 
 input1: input/p1.pdb
-selection1: all
+select1: all
 
 input2: input/p2.pdb
-selection: all
+select2: all
 
 rmsd: all
