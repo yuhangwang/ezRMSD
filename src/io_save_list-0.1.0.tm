@@ -3,7 +3,7 @@
 # LINCENSE: MIT/X11
 # DATE: 2016-10-27
 #----------------------------------------------------------------
-namespace eval ::_ {}
+namespace eval ::_::io {}
 #----------------------------------------------------------------
 # Save a (nested) list into an output file
 # 
@@ -12,8 +12,9 @@ namespace eval ::_ {}
 # output: output file
 # data: a list of numbers or nested list of numbers
 #----------------------------------------------------------------
-proc ::_::save_list {output data} {
+proc ::_::io::save_list {output data} {
 	set OUT [open $output w]
 	foreach d $data { puts $OUT [join $d] }
 	close $OUT
+    return $output
 }

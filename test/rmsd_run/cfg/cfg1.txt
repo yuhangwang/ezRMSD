@@ -1,0 +1,9 @@
+output: output/cfg1.dat
+
+input1: input/p1.pdb
+selection1: all
+
+input2: input/p2.pdb
+selection: all
+
+rmsd: all

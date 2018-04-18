@@ -1,4 +1,5 @@
 #! package require rmsd_io_read_cfg
+#! package require 
 ##=======================================================
 ## Calculate overall RMSD values
 ##=======================================================
@@ -8,4 +9,7 @@
 ##=======================================================
 proc ::rmsd::run {cfg_file} {
     set cfg [::rmsd::io read cfg $cfg_file]
+    if {[::dict get $cfg rmsd] eq "all"} {
+
+    }
 }

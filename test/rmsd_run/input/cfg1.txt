@@ -1,2 +1,0 @@
-output: o1.dat
-input1:
