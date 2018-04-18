@@ -2,14 +2,20 @@
 namespace eval ::rmsd {
     namespace export align
     namespace export calc
+    namespace export run
     namespace eval calc {
         namespace export all
         namespace export res
         namespace ensemble create
     }
+    namespace eval read {
+        namespace export cfg
+        namespace ensemble create
+    }
     namespace ensemble create
 }
 
+package require fmap
 package require set_intersect
 package require common_chains
 package require common_residues
