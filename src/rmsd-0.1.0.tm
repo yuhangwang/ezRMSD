@@ -8,9 +8,11 @@ namespace eval ::rmsd {
         namespace export res
         namespace ensemble create
     }
-    namespace eval read {
-        namespace export cfg
-        namespace ensemble create
+    namespace eval io {
+        namespace eval read {
+            namespace export cfg
+            namespace ensemble create
+        }
     }
     namespace ensemble create
 }
