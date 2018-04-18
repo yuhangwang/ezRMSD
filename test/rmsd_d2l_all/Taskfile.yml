@@ -10,6 +10,7 @@ tasks:
     cmds:
       - task: test1
       - task: test2
+      - task: test3
 
   test1:
     cmds:
@@ -18,3 +19,7 @@ tasks:
   test2:
     cmds:
       - tclsh test2.tcl
+
+  test3:
+    cmds:
+      - tclsh test3.tcl
