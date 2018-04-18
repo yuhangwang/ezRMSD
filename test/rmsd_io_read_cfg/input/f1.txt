@@ -1,0 +1,4 @@
+output: out.dat 
+input1: in1.pdb  
+input2: in2.pdb   
+average : true  
