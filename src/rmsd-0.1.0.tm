@@ -18,6 +18,7 @@ namespace eval ::rmsd {
 }
 
 package require fmap
+package require io_read_lines
 package require set_intersect
 package require common_chains
 package require common_residues
