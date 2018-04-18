@@ -1,11 +1,10 @@
 ::tcl::tm::path add [file join ".." ".." "src"]
 package require rmsd
-package require load_molecule
 package require dict_compare_list
 
 proc test {} {
-    set id1 [::umolflow::loadMolecule "input/p5.pdb"]
-    set id2 [::umolflow::loadMolecule "input/p6.pdb"]
+    set id1 [::vmd::io load "input/p5.pdb"]
+    set id2 [::vmd::io load "input/p6.pdb"]
     set seltxt "all"
     set expected1 {1.0 1.0 1.0 1.0 1.0 1.0}
     set expected2 {2.0 2.0 2.0 2.0 2.0 2.0}
