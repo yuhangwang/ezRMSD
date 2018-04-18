@@ -12,7 +12,7 @@ proc test {} {
        {A 2 ALA 0.5}
        {B 1 PRO 0.5}
     }
-    set answer [::rmsd::dict_to_list $input]
+    set answer [::rmsd::d2l_all $input]
     if {[::_::list compare $answer $expected]} {
         puts "PASS!"
     } else {

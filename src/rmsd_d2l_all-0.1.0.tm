@@ -16,7 +16,7 @@
 ##    {B 1 PRO 0.5}
 ## }
 ## =============================================
-proc ::rmsd::dict_to_list {d} {
+proc ::rmsd::d2l_all {d} {
     set output {}
     dict for {chain_id items} $d {
         dict for {key rmsd_value} $items {
