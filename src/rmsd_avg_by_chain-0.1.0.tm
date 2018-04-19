@@ -27,12 +27,20 @@
 ## ======================================
 proc ::rmsd::avg_by_chain {rmsds} {
     set shared_keys [::rmsd::shared_res_keys $rmsds]
-    set output {}
-    foreach chain_id $rmsds {
+
+    # collect RMSD values for each residue-key
+    set collection {}
+    foreach chain_id [::dict keys $rmsds] {
         set d [::dict get $rmsds $chain_id]
         foreach key $shared_keys {
-            ::dict lappend output $key [::dict get $d $key]
+            ::dict lappend collection $key [::dict get $d $key]
         }
     }
-    return [::_::fmap ::_::math::avg $output]
+
+    # compute the average RMSD
+    set output {}
+    ::dict for {k xs} $collection {
+        ::dict set output $k [::_::math::avg $xs]
+    }
+    return $output
 }

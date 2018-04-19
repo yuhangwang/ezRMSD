@@ -1,0 +1,16 @@
+# github.com/go-task/task
+
+version: '2'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - task: test1
+
+  test1:
+    cmds:
+      -  tclsh test1.tcl
+
