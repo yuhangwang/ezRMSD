@@ -26,10 +26,10 @@ package require vmd_io_load
 package require io_save_list
 package require io_read_lines
 package require struct_set_intersect
-package require common_chains
-package require common_residues
-package require common_atoms
-package require common_part
+package require rmsd_common_chains
+package require rmsd_common_residues
+package require rmsd_common_atoms
+package require rmsd_common_part
 package require rmsd_seltxt
 package require rmsd_align
 package require rmsd_calc_all
@@ -38,6 +38,7 @@ package require rmsd_d2l_all
 package require rmsd_d2l_chain
 package require rmsd_io_read_cfg
 package require rmsd_collect_res_keys
+package require rmsd_shared_res_keys
 # package require rmsd_avg_by_chain
 
 package require rmsd_main
