@@ -1,3 +1,5 @@
+#! package require rmsd_collect_res_keys
+
 ## ======================================
 ## Save RMSD values by chain
 ## ======================================
@@ -22,5 +24,6 @@
 ## among chains are kept.
 ## ======================================
 proc ::rmsd::avg_by_chain {rmsds} {
+    set all_res_keys [::rmsd::collect_res_keys $rmsds]
     
 }
