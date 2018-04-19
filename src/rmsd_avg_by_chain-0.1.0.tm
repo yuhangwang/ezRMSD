@@ -21,4 +21,6 @@
 ## note: only those residues that are in common
 ## among chains are kept.
 ## ======================================
-proc ::rmsd::avg_by_chain {}
+proc ::rmsd::avg_by_chain {rmsds} {
+    
+}

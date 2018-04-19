@@ -38,7 +38,7 @@ package require rmsd_d2l_all
 package require rmsd_d2l_chain
 package require rmsd_io_read_cfg
 package require rmsd_collect_res_keys
-package require rmsd_avg_by_chain
+# package require rmsd_avg_by_chain
 
 package require rmsd_main
 package require rmsd_run
