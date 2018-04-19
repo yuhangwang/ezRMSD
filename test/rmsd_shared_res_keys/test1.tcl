@@ -26,7 +26,7 @@ proc test {} {
     } else {
         puts ">>> FAILED!"
     }
-    puts "answer = $answer"
+    puts "answer   = $answer"
     puts "expected = $expected"
 }
 test

@@ -21,5 +21,5 @@
 proc ::rmsd::shared_res_keys {rmsds} {
     set all_res_keys [::rmsd::collect_res_keys $rmsds]
     set base [lindex $all_res_keys 0]
-    return [::_::fold ::struct::set_intersect $all_res_keys $base]
+    return [::_::fold ::struct::set::intersect $all_res_keys $base]
 }

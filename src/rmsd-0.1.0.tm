@@ -19,7 +19,9 @@ namespace eval ::rmsd {
     }
 }
 
+package require math_avg
 package require fmap
+package require fold
 package require filter
 package require nonblank
 package require vmd_io_load

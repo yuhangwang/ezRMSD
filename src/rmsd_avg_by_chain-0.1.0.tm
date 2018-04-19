@@ -1,6 +1,6 @@
-#! package require rmsd_collect_res_keys
-#! package require fold
-#! package require set_intersect
+#! package require rmsd_shared_res_keys
+#! package require fmap
+#! package require math_avg
 
 ## ======================================
 ## Save RMSD values by chain
@@ -26,7 +26,13 @@
 ## among chains are kept.
 ## ======================================
 proc ::rmsd::avg_by_chain {rmsds} {
-    set all_res_keys [::rmsd::collect_res_keys $rmsds]
-    set base [lindex $all_res_keys 0]
-    return [::_::fold ::struct::set_intersect $all_res_keys $base]
+    set shared_keys [::rmsd::shared_res_keys $rmsds]
+    set output {}
+    foreach chain_id $rmsds {
+        set d [::dict get $rmsds $chain_id]
+        foreach key $shared_keys {
+            ::dict lappend output $key [::dict get $d $key]
+        }
+    }
+    return [::_::fmap ::_::math::avg $output]
 }
