@@ -1,0 +1,15 @@
+output-prefix: output/cfg2
+rmsd-overall: dat
+rmsd-res: txt dat
+rmsd-res-avg: txt dat
+rmsd-res-by-chain: txt dat
+
+input1: input/p3.pdb
+output1: output/p3_rmsd.pdb
+select-align1: all
+select-rmsd1: all
+
+input2: input/p4.pdb
+output2: output/p4_rmsd.pdb
+select-align2: all
+select-rmsd2: all

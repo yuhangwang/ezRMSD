@@ -11,7 +11,6 @@
 ## cfg (dict): input configuration dictionary
 ##=======================================================
 proc ::rmsd::main {cfg} {
-    set cfg [::rmsd::io read cfg $cfg_file]
     set id1 [::vmd::io load [::dict get $cfg input1]]
     set id2 [::vmd::io load [::dict get $cfg input2]]
     set output  [::dict get $cfg output]
