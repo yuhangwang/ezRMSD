@@ -1,4 +1,6 @@
 #! package require rmsd_collect_res_keys
+#! package require fold
+#! package require set_intersect
 
 ## ======================================
 ## Save RMSD values by chain
@@ -25,5 +27,6 @@
 ## ======================================
 proc ::rmsd::avg_by_chain {rmsds} {
     set all_res_keys [::rmsd::collect_res_keys $rmsds]
-    
+    set base [lindex $all_res_keys 0]
+    return [::_::fold ::struct::set_intersect $all_res_keys $base]
 }

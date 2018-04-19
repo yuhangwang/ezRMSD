@@ -1,5 +1,5 @@
 ::tcl::tm::path add [file join ".." ".." "src"]
-package require set_intersect
+package require struct_set_intersect
 package require list_compare
 
 proc test {} {

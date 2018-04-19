@@ -25,7 +25,7 @@ package require nonblank
 package require vmd_io_load
 package require io_save_list
 package require io_read_lines
-package require set_intersect
+package require struct_set_intersect
 package require common_chains
 package require common_residues
 package require common_atoms
