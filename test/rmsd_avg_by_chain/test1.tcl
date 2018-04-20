@@ -19,13 +19,13 @@ proc test {} {
         }
     }
     
-    set expected {
-        {1 PRO} 0.15000000000000002
-        {2 ALA} 0.4
-        {5 TYR} 0.7
-    }
-
-    set answer [::rmsd::avg_by_chain $in]
+    set expected [::dict create \
+        {1 PRO} 0.15000000000000002 \
+        {2 ALA} 0.4 \
+        {5 TYR} 0.7 \
+        ]
+        
+    set answer [::dict get [::rmsd::avg_by_chain $in] _]
         
     if {[::_::list::compare $answer $expected]} {
         puts ">>> PASS!"
