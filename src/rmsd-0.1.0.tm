@@ -9,13 +9,16 @@ namespace eval ::rmsd {
         namespace export res
         namespace ensemble create
     }
+
+    namespace eval data {
+    }
+    
     namespace eval io {
         namespace eval read {
             namespace export cfg
             namespace ensemble create
         }
         namespace eval write {
-            namespace ensemble create
         }
         namespace export read
         namespace ensemble create
@@ -40,8 +43,7 @@ package require rmsd_align
 package require rmsd_calc_all
 package require rmsd_calc_res
 package require rmsd_calc_main
-package require rmsd_d2l_all
-package require rmsd_d2l_chain
+package require rmsd_data_collapse
 package require rmsd_io_read_cfg
 package require rmsd_io_write_main
 package require rmsd_collect_res_keys
