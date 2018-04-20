@@ -14,36 +14,37 @@ package require rmsd
 ## Example 
 Example configuration file:
 ```tcl
-{
-    outputs {
-        prefix output/out1
-        calc {
-            overall {dat}
-            res {dat txt}
-            avg {dat txt}
-        }
+outputs {
+    prefix output/out1
+    calc {
+        overall {dat}
+        res {dat txt}
+        avg {dat txt}
     }
-    inputs {
-        ref {
-            input/p3.pdb
-        }
-        target {
-            input/p4.pdb
-        }
+}
+
+inputs {
+    ref {
+        input/p3.pdb
     }
-    selections {
-        ref {
-            align all
-            rmsd  all
-        }
-        target {
-            align all
-            rmsd  all
-        }
+    target {
+        input/p4.pdb
     }
-    control {
-        align true
-        save-pdb true
+}
+
+selections {
+    ref {
+        align all
+        rmsd  all
     }
+    target {
+        align all
+        rmsd  all
+    }
+}
+
+control {
+    align true
+    save-pdb true
 }
 ```

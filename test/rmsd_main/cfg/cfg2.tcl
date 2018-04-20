@@ -1,5 +1,5 @@
 outputs {
-    prefix output/out1
+    prefix output/out2
     calc {
         overall {dat}
         res {dat txt}
@@ -9,10 +9,10 @@ outputs {
 
 inputs {
     ref {
-        input/p3.pdb
+        input/p5.pdb
     }
     target {
-        input/p4.pdb
+        input/p6.pdb
     }
 }
 
@@ -29,5 +29,5 @@ selections {
 
 control {
     align true
-    save-pdb true
+    save-pdb false
 }

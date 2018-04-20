@@ -1,17 +1,34 @@
 ::tcl::tm::path add [file join ".." ".." "src"]
 package require rmsd
 package require io_read_all
+package require dict_compare_list
 
 proc test {} {
-    set answer [::_::io::read::all [::rmsd run "cfg/cfg2.txt"]]
-    set expected [::_::io::read::all "expect/e2.txt"]
+    set cfg [::_::io::read::all "cfg/cfg2.tcl"]
+    set prefix "output/out2"
+    puts ">>=== [dict keys $cfg]"
+    set expected [dict create \
+        overall [list "${prefix}_overall.dat"] \
+        res [list \
+            "${prefix}_A.txt" \
+            "${prefix}_A.dat" \
+            "${prefix}_B.txt" \
+            "${prefix}_B.dat" \
+        ]\
+        avg [list "${prefix}_avg.dat" \
+            "${prefix}_avg.txt" \
+        ]\
+        pdb {} \
+    ]
+
+    set answer [::rmsd::main $cfg]
         
-    if {$answer eq $expected} {
+    if {[::_::dict::compare_list $answer $expected]} {
         puts ">>> PASS!"
     } else {
         puts ">>> FAILED!"
     }
-    puts "answer = $answer"
+    puts "answer   = $answer"
     puts "expected = $expected"
 }
 test

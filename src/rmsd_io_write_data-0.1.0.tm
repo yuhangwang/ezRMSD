@@ -18,7 +18,10 @@ proc ::rmsd::io::write::data {ext prefix raw_data} {
     } elseif {$ext eq "txt"} {
         set data [::rmsd::data::collapse $raw_data false]
     } else {
+        puts "(::rmsd::io::write::data)"
+        puts "=============================================="
         puts "WARNING: unsupported output data type \"$ext\""
+        puts "=============================================="
         set data {}
     }
 

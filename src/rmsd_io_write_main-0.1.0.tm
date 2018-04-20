@@ -20,8 +20,8 @@
 ## ============================================
 proc ::rmsd::io::write::main {prefix params results} {
     set output [::dict create]
-    foreach k [::dict keys $params] {
-        set formats [::dict get $params $k]
+    foreach k [::dict keys $results] {
+        set formats  [::dict get $params $k]
         set raw_data [::dict get $results $k]
 
         if {$k eq "overall" || $k eq "avg"} {

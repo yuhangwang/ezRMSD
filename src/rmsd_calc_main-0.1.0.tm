@@ -24,14 +24,14 @@ proc ::rmsd::calc::main {id1 seltxt1 id2 seltxt2 rmsd_types {do_align true}} {
     set target [::atomselect $id2 $seltxt]
 
     puts "=============================="
-    puts "Atoms chosen:"
+    puts "Atoms chosen for RMSD:"
     puts "------------------------------"
     puts $seltxt
     puts ""
 
     set output [::dict create]
     foreach rmsd_type $rmsd_types {
-        if {$rmsd_type eq "all"} {
+        if {$rmsd_type eq "overall"} {
             ::dict set output $rmsd_type [::rmsd calc all $ref $target $common $do_align]
         } elseif {$rmsd_type eq "res"} {
             ::dict set output $rmsd_type [::rmsd calc res $ref $target $common $do_align]
@@ -40,7 +40,10 @@ proc ::rmsd::calc::main {id1 seltxt1 id2 seltxt2 rmsd_types {do_align true}} {
                 [::rmsd calc res $ref $target $common $do_align]\ 
             ]
         } else {
-            puts "WARNING: unrecognized RMSD type \"$rmsd_type\""
+            puts "=================================================="
+            puts "(::rmsd::calc::main)"
+            puts "WARNING: unsupported RMSD type \"$rmsd_type\""
+            puts "=================================================="
             continue
         }
     }

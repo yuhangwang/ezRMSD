@@ -30,13 +30,17 @@ proc ::rmsd::main {cfg} {
     ]
 
     if {[::dict get $cfg control save-pdb]} {
-        ::rmsd::io::write::pdb [::dict get $cfg outputs prefix] [list $id1 $id2]
+        set out_pdbs [::rmsd::io::write::pdb [::dict get $cfg outputs prefix] [list $id1 $id2]]
+    } else {
+        set out_pdbs {}
     }
     
-    return [::rmsd::io::write::main \
-        [::dict get $cfg outputs prefix] \
-        [::dict get $cfg outputs calc] \
-        $results \
-        [::dict create ref $id1 target $id2] \
+    return [concat \
+        [::rmsd::io::write::main \
+            [::dict get $cfg outputs prefix] \
+            [::dict get $cfg outputs calc] \
+            $results \
+        ] \
+        [dict create pdb $out_pdbs] \
     ]
 }
