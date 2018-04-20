@@ -46,6 +46,7 @@ package require rmsd_calc_main
 package require rmsd_data_collapse
 package require rmsd_io_read_cfg
 package require rmsd_io_write_data
+package require rmsd_io_write_pdb
 package require rmsd_io_write_main
 package require rmsd_collect_res_keys
 package require rmsd_shared_res_keys
