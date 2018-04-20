@@ -3,11 +3,9 @@
         prefix output/out1
         calc {
             overall {dat}
-            res {dat txt}
-            res-by-chain {dat txt}
-            res-by-chain-avg {dat txt}
+            res {dat txt pdb}
+            avg {dat txt pdb}
         }
-        save-rmsd-pdb true
     }
     inputs {
         ref {
@@ -26,5 +24,8 @@
             align all
             rmsd  all
         }
+    }
+    control {
+        align true
     }
 }

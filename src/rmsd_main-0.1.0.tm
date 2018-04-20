@@ -1,4 +1,5 @@
 #! package require rmsd_io_read_cfg
+#! package require rmsd_align
 #! package require rmsd_calc_all
 #! package require rmsd_calc_res
 #! package require io_save_list
@@ -11,19 +12,19 @@
 ## cfg (dict): input configuration dictionary
 ##=======================================================
 proc ::rmsd::main {cfg} {
-    set id1 [::vmd::io load [::dict get $cfg input1]]
-    set id2 [::vmd::io load [::dict get $cfg input2]]
-    set output  [::dict get $cfg output]
+    set id1 [::vmd::io load {*}[::dict get $cfg inputs ref]]
+    set id2 [::vmd::io load {*}[::dict get $cfg inputs target]]
+    set output_prefix  [::dict get $cfg outputs prefix]
     set seltxt1 [::dict get $cfg select1]
     set seltxt2 [::dict get $cfg select2]
-    set rmsd_type [::dict get $cfg rmsd]
-    if {$rmsd_type eq "all"} {
-        set rmsd_values [::rmsd calc all $id1 $seltxt1 $id2 $seltxt2]
-    } elseif {$rmsd_type eq "residue"} {
-        set rmsd_values [::rmsd::d2l_all [::rmsd calc res $id1 $seltxt1 $id2 $seltxt2]]
-    } else {
-        set rmsd_values {}
+    set common [::rmsd::common_part $id1 $seltxt1 $id2 $seltxt2]
+    set seltxt_common [::rmsd::seltxt $common]
+
+    if {[::dict get $cfg control align]} {
+        ::rmsd::align $id1 $seltxt_common $id2 $seltxt_common
     }
+
+    
     ::_::io::save_list $output $rmsd_values
     return $output
 }

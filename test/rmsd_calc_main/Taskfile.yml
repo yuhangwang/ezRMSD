@@ -1,0 +1,37 @@
+# github.com/go-task/task
+
+version: '2'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - task: test1
+      - task: test2
+      - task: test3
+      # - task: test4
+      # - task: test5
+
+  test1:
+    cmds:
+      - vmd -dispdev text -e test1.tcl
+
+
+  test2:
+    cmds:
+      - vmd -dispdev text -e test2.tcl
+
+  test3:
+    cmds:
+      - vmd -dispdev text -e test3.tcl
+  
+  test4:
+    cmds:
+      - vmd -dispdev text -e test4.tcl
+  
+  test5:
+    cmds:
+      - vmd -dispdev text -e test5.tcl
+

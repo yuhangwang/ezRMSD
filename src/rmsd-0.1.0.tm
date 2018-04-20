@@ -36,6 +36,7 @@ package require rmsd_seltxt
 package require rmsd_align
 package require rmsd_calc_all
 package require rmsd_calc_res
+package require rmsd_calc_main
 package require rmsd_d2l_all
 package require rmsd_d2l_chain
 package require rmsd_io_read_cfg
