@@ -6,7 +6,6 @@ package require dict_compare_list
 proc test {} {
     set cfg [::_::io::read::all "cfg/cfg1.tcl"]
 
-    puts ">>=== [dict keys $cfg]"
     set expected [dict create \
         overall [list "output/out1_overall.dat"] \
         res [list \

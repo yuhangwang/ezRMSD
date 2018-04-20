@@ -1,9 +1,0 @@
-output: output/cfg2.dat
-
-input1: input/p3.pdb
-select1: all
-
-input2: input/p4.pdb
-select2: all
-
-rmsd: residue
