@@ -21,20 +21,24 @@ proc ::rmsd::io::write::main {prefix params results mol_ids} {
     set output [::dict create]
     foreach k [::dict keys $params] {
         set formats [::dict get $params $k]
-        set raw_data [::dict get $results $k]
 
-        if {$k eq "overall"} {
-            ::dict set output $k [::_::fmap ::rmsd::io::write::data $prefix]
-        }
-
-
-        foreach ext $formats {
-            if {$ext eq "dat"} {
-                set file_name [format "%s.%s" $prefix $ext]
-                set data [::rmsd::data::collapse $raw_data true]
-                ::_::io::save_list $file_name $data
-                ::dict lappend output $k $file_name
-            } elseif {$ext eq "txt"}
+        if {$k eq "overall" || $k eq "avg"} {
+            set raw_data [::dict get $results $k "_"]
+            ::dict set output $k \
+                [::_::fmap ::rmsd::io::write::data $formats [list "${prefix}_${k}" $raw_data]]
+        } elseif {$k eq "res"} {
+            set output_files [::dict create]
+            foreach chain_id [::dict keys $results] {
+                set raw_data [::dict create \
+                    $chain_id [::dict get $results $chain_id] \
+                ]
+                lappend output_files \
+                    [::_::fmap ::rmsd::io::write::data $formats \
+                        [list "${prefix}_chain_${chain_id}" $raw_data] \
+                    ]
+            }
+            ::dict set output $k [concat {*}$output_files]
         }
     }
+    return $output
 }

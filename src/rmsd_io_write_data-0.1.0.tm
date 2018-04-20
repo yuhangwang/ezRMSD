@@ -5,13 +5,13 @@
 ## ============================================
 ## Args
 ## ============================================
-## format (str): data format
+## ext (str): data format extension name
 ## prefix (str): output file name prefix
 ## raw_data (dict): rmsd dict
 ## ============================================
 ## Returns (str): output file name
 ## ============================================
-proc ::rmsd::io::write::data {format prefix raw_data} {
+proc ::rmsd::io::write::data {ext prefix raw_data} {
     set file_name [format "%s.%s" $prefix $ext]
     if {$ext eq "dat"} {
         set data [::rmsd::data::collapse $raw_data true]
