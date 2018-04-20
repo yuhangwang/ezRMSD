@@ -1,0 +1,40 @@
+# github.com/go-task/task
+
+version: '2'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - task: test1
+      - task: test2
+      - task: test3
+      - task: test4
+      - task: test5
+      - task: test6
+
+  test1:
+    cmds:
+      -  tclsh test1.tcl
+
+  test2:
+    cmds:
+      -  tclsh test2.tcl
+
+  test3:
+    cmds:
+      -  tclsh test3.tcl
+
+  test4:
+    cmds:
+      -  tclsh test4.tcl
+
+  test5:
+    cmds:
+      -  tclsh test5.tcl
+
+  test6:
+    cmds:
+      -  tclsh test6.tcl

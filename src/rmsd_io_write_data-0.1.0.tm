@@ -17,6 +17,11 @@ proc ::rmsd::io::write::data {ext prefix raw_data} {
         set data [::rmsd::data::collapse $raw_data true]
     } elseif {$ext eq "txt"} {
         set data [::rmsd::data::collapse $raw_data false]
+    } else {
+        puts "WARNING: unsupported output data type \"$ext\""
+        set data {}
     }
+
+    puts ">>> $file_name"
     return [::_::io::save_list $file_name $data]
 }
