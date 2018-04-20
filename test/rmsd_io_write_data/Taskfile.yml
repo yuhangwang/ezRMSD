@@ -19,3 +19,10 @@ tasks:
     cmds:
       -  tclsh test2.tcl
 
+  test3:
+    cmds:
+      -  tclsh test3.tcl
+
+  test4:
+    cmds:
+      -  tclsh test4.tcl

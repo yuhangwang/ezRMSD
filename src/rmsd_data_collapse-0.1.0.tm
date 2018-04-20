@@ -22,6 +22,9 @@
 proc ::rmsd::data::collapse {d {numeric false}} {
     set output {}
     dict for {chain_id items} $d {
+        if {$chain_id eq "_"} {
+            set chain_id ""
+        }
         dict for {key rmsd_value} $items {
             if {$numeric} {
                 if {$key eq "_"} {
