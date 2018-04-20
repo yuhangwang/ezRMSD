@@ -3,19 +3,16 @@
 ##=======================================================
 ## Args:
 ## -----
-## id1 (int): molecule ID for the first molecule
-## seltxt1 (str): atom selection string for the first molecule
-## id2 (int): molecule ID for the second molecule
-## seltxt2 (str): atom selection string for the second molecule
+## ref (object): VMD atom selection object for the reference
+## target (object):: VMD atom selection object for the target
+## common (dict): common chains and residues
 ## do_align = true (bool): (optional) if true, alignment will be done
 ## update_beta = true (bool): (optional) if true, beta field will be used
 ##      to store RMSD values. Residues not selected will have zero beta values.
 ##=======================================================
-proc ::rmsd::calc::res {id1 seltxt1 id2 seltxt2 {do_align true} {update_beta true}} {
-    set common [::rmsd::common_part $id1 $seltxt1 $id2 $seltxt2]
-    set seltxt_common [::rmsd::seltxt $common]
-    set ref    [::atomselect $id1 "$seltxt_common"]
-    set target [::atomselect $id2 "$seltxt_common"]
+proc ::rmsd::calc::res {ref target common {do_align true} {update_beta true}} {
+    set id1 [$ref    molid]
+    set id2 [$target molid]
 
     if {$do_align} {
         $target move [::measure fit $target $ref]
@@ -30,21 +27,22 @@ proc ::rmsd::calc::res {id1 seltxt1 id2 seltxt2 {do_align true} {update_beta tru
     }
     
     set output [::dict create]
-    ::dict for {chain_id residue_dict} $common {
+    foreach chain_id [::dict keys $common] {
+        set residue_dict [::dict get $common $chain_id]
         if {[::dict size $residue_dict] > 0} {
-            
             # accumuate all per-residue RMSD values for this chain
             set res_rmsd_dict {}
-            ::dict for {resid_resname atom_name_list} $residue_dict {
+            foreach res_key [::dict keys $residue_dict] {
+                set atom_name_list [::dict get $residue_dict $res_key]
                 if {[::llength $atom_name_list] > 0} {
                     set sel_dict [::dict create \
-                        $chain_id [::dict create $resid_resname $atom_name_list] \
+                        $chain_id [::dict create $res_key $atom_name_list] \
                     ]
                     set res_seltxt [::rmsd::seltxt $sel_dict]
                     set res_ref    [::atomselect $id1 "$res_seltxt"]
                     set res_target [::atomselect $id2 "$res_seltxt"]
                     set rmsd_value [::measure rmsd $res_target $res_ref]
-                    ::dict set res_rmsd_dict $resid_resname $rmsd_value
+                    ::dict set res_rmsd_dict $res_key $rmsd_value
                     if {$update_beta} {
                         $res_ref    set beta $rmsd_value
                         $res_target set beta $rmsd_value
@@ -60,15 +58,6 @@ proc ::rmsd::calc::res {id1 seltxt1 id2 seltxt2 {do_align true} {update_beta tru
 
         } else {}
     }
-
-    $target delete
-    $ref delete
-
-    puts "=============================="
-    puts "Atoms chosen:"
-    puts "------------------------------"
-    puts $seltxt_common
-    puts ""
 
     return $output
 }

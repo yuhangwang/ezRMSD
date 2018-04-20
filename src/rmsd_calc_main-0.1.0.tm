@@ -18,15 +18,26 @@
 ##  calculation results(dict) as the value.
 ##=======================================================
 proc ::rmsd::calc::main {id1 seltxt1 id2 seltxt2 rmsd_types {do_align true}} {
+    set common [::rmsd::common_part $id1 $seltxt1 $id2 $seltxt2]
+    set seltxt [::rmsd::seltxt $common]
+    set ref    [::atomselect $id1 $seltxt]
+    set target [::atomselect $id2 $seltxt]
+
+    puts "=============================="
+    puts "Atoms chosen:"
+    puts "------------------------------"
+    puts $seltxt
+    puts ""
+
     set output [::dict create]
     foreach rmsd_type $rmsd_types {
         if {$rmsd_type eq "all"} {
-            ::dict set output $rmsd_type [::rmsd calc all $id1 $seltxt1 $id2 $seltxt2 $do_align]
+            ::dict set output $rmsd_type [::rmsd calc all $ref $target $common $do_align]
         } elseif {$rmsd_type eq "res"} {
-            ::dict set output $rmsd_type [::rmsd calc res $id1 $seltxt1 $id2 $seltxt2 $do_align]
+            ::dict set output $rmsd_type [::rmsd calc res $ref $target $common $do_align]
         } elseif {$rmsd_type eq "avg"} {
             ::dict set output $rmsd_type [::rmsd::avg_by_chain \
-                [::rmsd calc res $id1 $seltxt1 $id2 $seltxt2 $do_align]\ 
+                [::rmsd calc res $ref $target $common $do_align]\ 
             ]
         } else {
             puts "WARNING: unrecognized RMSD type \"$rmsd_type\""
