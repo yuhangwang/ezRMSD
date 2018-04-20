@@ -16,12 +16,12 @@ proc ::rmsd::main {cfg} {
 
     if {[::dict get $cfg control align]} {
         ::rmsd::align \
-            $id1 [::dict get $cfg selections ref align] \
+            $id1 [::dict get $cfg selections ref    align] \
             $id2 [::dict get $cfg selections target align]
     }
 
     set results [::rmsd::calc::main \
-        $id1 [::dict get $cfg selections ref rmsd] \
+        $id1 [::dict get $cfg selections ref    rmsd] \
         $id2 [::dict get $cfg selections target rmsd] \
     ]
     
