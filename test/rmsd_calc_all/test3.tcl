@@ -17,7 +17,7 @@ proc test {} {
     set expected [expr sqrt(0.5)]
     set tol 1e-5
 
-    set answer [rmsd calc all $ref $target $common]
+    set answer [::dict get [rmsd calc all $ref $target $common] _ _]
     
     if {[expr $answer - $expected] < $tol} {
         puts ">>> PASS!"

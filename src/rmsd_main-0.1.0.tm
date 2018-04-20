@@ -1,4 +1,5 @@
 #! package require rmsd_io_read_cfg
+#! package require rmsd_io_write_main
 #! package require rmsd_align
 #! package require rmsd_calc_main
 #! package require io_save_list
@@ -23,8 +24,14 @@ proc ::rmsd::main {cfg} {
     set results [::rmsd::calc::main \
         $id1 [::dict get $cfg selections ref    rmsd] \
         $id2 [::dict get $cfg selections target rmsd] \
+        [::dict keys [::dict get $cfg outputs calc]] \
+        false \
     ]
     
-    ::_::io::save_list $output $rmsd_values
-    return $output
+    return [::rmsd::io::write::main \
+        [::dict get $cfg outputs prefix] \
+        [::dict get $cfg outputs calc] \
+        $results \
+        [::dict create ref $id1 target $id2] \
+    ]
 }

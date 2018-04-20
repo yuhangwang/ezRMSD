@@ -1,4 +1,5 @@
 #! package require rmsd_main
+#! package require io_read_all
 ##=======================================================
 ## Calculate overall RMSD values
 ##=======================================================
@@ -7,5 +8,5 @@
 ## cfg_file (str): input configuration file
 ##=======================================================
 proc ::rmsd::run {cfg_file} {
-    return [::rmsd::main [::rmsd::io read cfg $cfg_file]]
+    return [::rmsd::main [::_::io::read::all $cfg_file]]
 }

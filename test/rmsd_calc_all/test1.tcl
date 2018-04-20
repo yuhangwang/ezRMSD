@@ -13,7 +13,7 @@ proc test {} {
     set ref    [::atomselect $id1 $seltxt]
     set target [::atomselect $id2 $seltxt]
     
-    set expected 0.0
+    set expected {_ {_ 0.0}}
 
     set answer [rmsd calc all $ref $target $common]
     

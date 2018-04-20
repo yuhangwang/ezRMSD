@@ -42,5 +42,5 @@ proc ::rmsd::avg_by_chain {rmsds} {
     ::dict for {k xs} $collection {
         ::dict set output $k [::_::math::avg $xs]
     }
-    return $output
+    return [::dict create "_" $output]
 }

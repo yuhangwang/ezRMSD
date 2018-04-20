@@ -12,5 +12,9 @@ proc ::rmsd::calc::all {ref target common {do_align true}} {
     if {$do_align} {
         $target move [::measure fit $target $ref]
     }
-    return [::measure rmsd $target $ref]
+    return [::dict create \
+        "_" [::dict create \
+                "_" [::measure rmsd $target $ref] \
+            ] \
+    ]
 }
