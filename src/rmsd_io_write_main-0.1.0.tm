@@ -9,15 +9,16 @@
 ## prefix (str): output prefix
 ## params (dict): output types and output formats
 ##  e.g.
-##  calc {
+##  {
 ##      overall {dat}
 ##      res {dat txt}
 ##      avg {dat txt}
 ##  }
+## results (dict): a dict containing the results
 ## ============================================
 ## Returns (dict): a dictionary of output files
 ## ============================================
-proc ::rmsd::io::write::main {prefix params results mol_ids} {
+proc ::rmsd::io::write::main {prefix params results} {
     set output [::dict create]
     foreach k [::dict keys $params] {
         set formats [::dict get $params $k]
@@ -25,7 +26,7 @@ proc ::rmsd::io::write::main {prefix params results mol_ids} {
         if {$k eq "overall" || $k eq "avg"} {
             set raw_data [::dict get $results $k "_"]
             ::dict set output $k \
-                [::_::fmap ::rmsd::io::write::data $formats [list "${prefix}_${k}" $raw_data]]
+                [::_::fmap ::rmsd::io::write::data $formats "${prefix}_${k}" $raw_data]
         } elseif {$k eq "res"} {
             set output_files [::dict create]
             foreach chain_id [::dict keys $results] {
@@ -34,7 +35,7 @@ proc ::rmsd::io::write::main {prefix params results mol_ids} {
                 ]
                 lappend output_files \
                     [::_::fmap ::rmsd::io::write::data $formats \
-                        [list "${prefix}_chain_${chain_id}" $raw_data] \
+                        [list "${prefix}_${chain_id}" $raw_data] \
                     ]
             }
             ::dict set output $k [concat {*}$output_files]
