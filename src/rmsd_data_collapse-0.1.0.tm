@@ -26,15 +26,17 @@ proc ::rmsd::data::collapse {d {numeric false}} {
             set chain_id ""
         }
         dict for {key rmsd_value} $items {
-            if {$numeric} {
-                if {$key eq "_"} {
-                    lappend output $rmsd_value
-                } else {
-                    lassign $key resid resname
-                    lappend output [::list $resid $rmsd_value]
-                }
+            if {$key eq "_"} {
+                set resid ""
+                set resname ""
             } else {
-                lappend output [::concat $chain_id $key $rmsd_value]
+                lassign $key resid resname
+            }
+
+            if {$numeric} {
+                lappend output [::concat $resid $rmsd_value]
+            } else {
+                lappend output [::concat $chain_id $resid $resname $rmsd_value]
             }
         }
     }

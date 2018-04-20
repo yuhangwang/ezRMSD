@@ -9,7 +9,7 @@ proc test {} {
     set expected [::_::io::read::all "expect/e2.txt"]
     set format txt
 
-    set prefix "output/o2"
+    set prefix "output/o2_avg"
     set answer [::_::io::read::all [::rmsd::io::write::data $format $prefix $data]]
         
     if {$answer eq $expected} {

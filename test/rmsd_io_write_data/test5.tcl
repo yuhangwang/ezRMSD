@@ -3,13 +3,11 @@ package require rmsd
 package require io_read_all
 
 proc test {} {
-    set data [dict create \
-            _ [dict create {1 PRO} 0.5 {2 SER} 0.7] \
-    ]
-    set expected [::_::io::read::all "expect/e2.dat"]
-    set format dat
+    set data  {_ {_ 0.5}}
+    set expected [::_::io::read::all "expect/e3.txt"]
+    set format txt
 
-    set prefix "output/o2_avg"
+    set prefix "output/o3_overall"
     set answer [::_::io::read::all [::rmsd::io::write::data $format $prefix $data]]
         
     if {$answer eq $expected} {
