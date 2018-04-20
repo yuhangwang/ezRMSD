@@ -19,8 +19,8 @@ Example configuration file:
         prefix output/out1
         calc {
             overall {dat}
-            res {dat txt pdb}
-            avg {dat txt pdb}
+            res {dat txt}
+            avg {dat txt}
         }
     }
     inputs {
@@ -43,6 +43,7 @@ Example configuration file:
     }
     control {
         align true
+        save-pdb true
     }
 }
 ```

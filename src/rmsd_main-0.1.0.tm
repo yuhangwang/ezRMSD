@@ -1,5 +1,6 @@
 #! package require rmsd_io_read_cfg
 #! package require rmsd_io_write_main
+#! package require rmsd_io_write_pdb
 #! package require rmsd_align
 #! package require rmsd_calc_main
 #! package require io_save_list
@@ -27,6 +28,10 @@ proc ::rmsd::main {cfg} {
         [::dict keys [::dict get $cfg outputs calc]] \
         false \
     ]
+
+    if {[::dict get $cfg control save-pdb]} {
+        ::rmsd::io::write::pdb [::dict get $cfg outputs prefix] [list $id1 $id2]
+    }
     
     return [::rmsd::io::write::main \
         [::dict get $cfg outputs prefix] \
