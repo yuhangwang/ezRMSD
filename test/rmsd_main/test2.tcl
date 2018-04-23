@@ -7,17 +7,27 @@ proc test {} {
     set cfg [::_::io::read::all "cfg/cfg2.tcl"]
     set prefix "output/out2"
     set expected [dict create \
-        overall [list "${prefix}_overall.dat"] \
+        overall [list "${prefix}_overall.data.txt"] \
         res [list \
-            "${prefix}_A.txt" \
-            "${prefix}_A.dat" \
-            "${prefix}_B.txt" \
-            "${prefix}_B.dat" \
+            "${prefix}_A.detail.txt" \
+            "${prefix}_A.data.txt" \
+            "${prefix}_B.detail.txt" \
+            "${prefix}_B.data.txt" \
         ]\
-        avg [list "${prefix}_avg.dat" \
-            "${prefix}_avg.txt" \
+        avg [list "${prefix}_avg.data.txt" \
+            "${prefix}_avg.detail.txt" \
         ]\
         pdb {} \
+        sel [::dict create \
+            align  [list \
+                "${prefix}_sel-align.txt" \
+                "${prefix}_sel-align.str.txt" \
+            ] \
+            rmsd  [list \
+                "${prefix}_sel-rmsd.txt" \
+                "${prefix}_sel-rmsd.str.txt" \
+            ]\
+        ] \
     ]
 
     set answer [::rmsd::main $cfg]

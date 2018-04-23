@@ -5,25 +5,28 @@
 ## ============================================
 ## Args
 ## ============================================
-## ext (str): data format extension name
+## format_type (str): data format extension name
 ## prefix (str): output file name prefix
 ## raw_data (dict): rmsd dict
 ## ============================================
 ## Returns (str): output file name
 ## ============================================
-proc ::rmsd::io::write::data {ext prefix raw_data} {
-    set file_name [format "%s.%s" $prefix $ext]
-    if {$ext eq "dat"} {
+proc ::rmsd::io::write::data {format_type prefix raw_data} {
+    if {$format_type eq "dat"} {
+        set ext "data.txt"
         set data [::rmsd::data::collapse $raw_data true]
-    } elseif {$ext eq "txt"} {
+    } elseif {$format_type eq "txt"} {
+        set ext "detail.txt"
         set data [::rmsd::data::collapse $raw_data false]
     } else {
+        set ext "null.txt"
         puts "(::rmsd::io::write::data)"
         puts "=============================================="
-        puts "WARNING: unsupported output data type \"$ext\""
+        puts "WARNING: unsupported output data format \"$format_type\""
         puts "=============================================="
         set data {}
     }
+    set file_name [format "%s.%s" $prefix $ext]
 
     puts ">>> $file_name"
     return [::_::io::save_list $file_name $data]

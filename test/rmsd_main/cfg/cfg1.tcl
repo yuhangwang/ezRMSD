@@ -30,4 +30,6 @@ selections {
 control {
     align true
     save-pdb true
+    save-selection-align false
+    save-selection-rmsd false
 }

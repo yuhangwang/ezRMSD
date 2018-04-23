@@ -7,18 +7,19 @@ proc test {} {
     set cfg [::_::io::read::all "cfg/cfg1.tcl"]
 
     set expected [dict create \
-        overall [list "output/out1_overall.dat"] \
+        overall [list "output/out1_overall.data.txt"] \
         res [list \
-            "output/out1_A.txt" \
-            "output/out1_A.dat" \
+            "output/out1_A.detail.txt" \
+            "output/out1_A.data.txt" \
         ]\
-        avg [list "output/out1_avg.dat" \
-            "output/out1_avg.txt" \
+        avg [list "output/out1_avg.data.txt" \
+            "output/out1_avg.detail.txt" \
         ]\
         pdb [list \
             "output/out1_0.pdb" \
             "output/out1_1.pdb" \
-        ]
+        ] \
+        sel {} \
     ]
 
     set answer [::rmsd::main $cfg]

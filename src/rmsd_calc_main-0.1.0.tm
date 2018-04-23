@@ -14,8 +14,10 @@
 ## do_align (bool): if true, alignment will be performed
 ##  before RMSD calculation
 ##=======================================================
-## Returns (dict): a dict with rmsd_type as key and the
+## Returns ({dict, dict}): two dictionaries
+## 1. a dict with rmsd_type as key and the
 ##  calculation results(dict) as the value.
+## 2. the atom selection used for RMSD calculation
 ##=======================================================
 proc ::rmsd::calc::main {id1 seltxt1 id2 seltxt2 rmsd_types {do_align true}} {
     set common [::rmsd::common_part $id1 $seltxt1 $id2 $seltxt2]
@@ -41,5 +43,5 @@ proc ::rmsd::calc::main {id1 seltxt1 id2 seltxt2 rmsd_types {do_align true}} {
             continue
         }
     }
-    return $output
+    return [list $output $common]
 }

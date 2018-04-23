@@ -46,5 +46,7 @@ selections {
 control {
     align true
     save-pdb true
+    save-selection-align true
+    save-selection-rmsd true
 }
 ```
