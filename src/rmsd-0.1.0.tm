@@ -32,6 +32,7 @@ package require filter
 package require nonblank
 package require vmd_io_load
 package require io_save_list
+package require io_save_str
 package require io_read_lines
 package require io_read_all
 package require struct_set_intersect

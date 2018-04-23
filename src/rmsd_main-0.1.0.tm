@@ -4,6 +4,7 @@
 #! package require rmsd_align
 #! package require rmsd_calc_main
 #! package require io_save_list
+#! package require io_save_str
 #! package require vmd_io_load
 ##=======================================================
 ## Calculate overall RMSD values
@@ -52,7 +53,7 @@ proc ::rmsd::main {cfg} {
             set out2 [::rmsd::seltxt $sel]
             ::dict set out_sel $k [list \
                 [::_::io::save_list $f_out1 $out1] \
-                [::_::io::save_list $f_out2 $out2] \
+                [::_::io::save_str $f_out2 $out2] \
             ]
         }
     }
