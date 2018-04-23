@@ -33,6 +33,7 @@ package require nonblank
 package require vmd_io_load
 package require io_save_list
 package require io_read_lines
+package require io_read_all
 package require struct_set_intersect
 package require rmsd_common_chains
 package require rmsd_common_residues

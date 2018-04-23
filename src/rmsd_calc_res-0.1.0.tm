@@ -41,7 +41,7 @@ proc ::rmsd::calc::res {ref target common {do_align true} {update_beta true}} {
                     set res_seltxt [::rmsd::seltxt $sel_dict]
                     set res_ref    [::atomselect $id1 "$res_seltxt"]
                     set res_target [::atomselect $id2 "$res_seltxt"]
-                    set rmsd_value [::measure rmsd $res_target $res_ref]
+                    set rmsd_value [format "%.3f" [::measure rmsd $res_target $res_ref]]
                     ::dict set res_rmsd_dict $res_key $rmsd_value
                     if {$update_beta} {
                         $res_ref    set beta $rmsd_value

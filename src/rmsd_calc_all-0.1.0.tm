@@ -14,7 +14,7 @@ proc ::rmsd::calc::all {ref target common {do_align true}} {
     }
     return [::dict create \
         "_" [::dict create \
-                "_" [::measure rmsd $target $ref] \
+                "_" [format "%.3f" [::measure rmsd $target $ref]] \
             ] \
     ]
 }

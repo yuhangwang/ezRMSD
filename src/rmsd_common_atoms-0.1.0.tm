@@ -28,9 +28,9 @@ proc ::rmsd::common_atoms {id1 seltxt1 id2 seltxt2 dict_chain_residue} {
                 set common_names [::struct::set intersect $names1 $names2]
                 dict set dict_resId_resName [::list $resId $resname1] $common_names 
             } else {
-                puts ">>> ERROR HINT: two corresponding residues should have the same residue type"
-                puts ">>> selection 1: \"$chainId:$resId is $resname1\""
-                puts ">>> selection 2: \"$chainId:$resId is $resname2\""
+                puts ">>> WARNING: two corresponding residues should have the same residue type"
+                puts ">>> reference: \"$chainId:$resId is $resname1\""
+                puts ">>> target:    \"$chainId:$resId is $resname2\""
             }
         }
         dict set output $chainId $dict_resId_resName

@@ -23,12 +23,6 @@ proc ::rmsd::calc::main {id1 seltxt1 id2 seltxt2 rmsd_types {do_align true}} {
     set ref    [::atomselect $id1 $seltxt]
     set target [::atomselect $id2 $seltxt]
 
-    puts "=============================="
-    puts "Atoms chosen for RMSD:"
-    puts "------------------------------"
-    puts $seltxt
-    puts ""
-
     set output [::dict create]
     foreach rmsd_type $rmsd_types {
         if {$rmsd_type eq "overall"} {

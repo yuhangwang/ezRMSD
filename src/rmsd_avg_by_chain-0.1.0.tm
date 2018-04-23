@@ -40,7 +40,7 @@ proc ::rmsd::avg_by_chain {rmsds} {
     # compute the average RMSD
     set output {}
     ::dict for {k xs} $collection {
-        ::dict set output $k [::_::math::avg $xs]
+        ::dict set output $k [format "%.3f" [::_::math::avg $xs]]
     }
     return [::dict create "_" $output]
 }
