@@ -18,7 +18,9 @@ proc ::rmsd::align {id1 seltxt1 id2 seltxt2} {
 
     set ref    [::atomselect $id1 "$seltxt_common"]
     set target [::atomselect $id2 "$seltxt_common"]
-    $target move [::measure fit $target $ref]
+    set target_all [::atomselect $id2 all]
+    $target_all move [::measure fit $target $ref]
+    $target_all delete
     $target delete
     $ref delete
     return $common

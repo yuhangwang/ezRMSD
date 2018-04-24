@@ -14,8 +14,8 @@ proc test {} {
     set target [::atomselect $id2 $seltxt]
 
     set expected [dict create \
-        A [dict create {1 PRO} 0.5 {2 PRO} 0.5] \
-        B [dict create {1 PRO} 0.5] \
+        A [dict create {1 PRO} 0.500 {2 PRO} 0.500] \
+        B [dict create {1 PRO} 0.500] \
     ]
 
     set answer [rmsd calc res $ref $target $common]

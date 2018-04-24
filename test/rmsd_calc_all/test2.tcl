@@ -13,9 +13,9 @@ proc test {} {
     set ref    [::atomselect $id1 $seltxt]
     set target [::atomselect $id2 $seltxt]
 
-    set expected {_ {_ 0.5}}
+    set expected [dict get {_ {_ 0.5}} _ _]
 
-    set answer [rmsd calc all $ref $target $common]
+    set answer [dict get [rmsd calc all $ref $target $common] _ _]
     
     if {$answer == $expected} {
         puts ">>> PASS!"

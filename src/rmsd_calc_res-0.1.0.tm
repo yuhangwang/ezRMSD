@@ -15,7 +15,9 @@ proc ::rmsd::calc::res {ref target common {do_align true} {update_beta true}} {
     set id2 [$target molid]
 
     if {$do_align} {
-        $target move [::measure fit $target $ref]
+        set target_all [::atomselect $id2 all]
+        $target_all move [::measure fit $target $ref]
+        $target_all delete
     }
 
     if {$update_beta} {

@@ -10,8 +10,11 @@
 ##=======================================================
 proc ::rmsd::calc::all {ref target common {do_align true}} {
     if {$do_align} {
-        $target move [::measure fit $target $ref]
+        set target_all [::atomselect [$target molid] all]
+        $target_all move [::measure fit $target $ref]
+        $target_all delete
     }
+
     return [::dict create \
         "_" [::dict create \
                 "_" [format "%.3f" [::measure rmsd $target $ref]] \
