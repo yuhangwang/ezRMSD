@@ -21,6 +21,10 @@ outputs {
         res {dat txt}
         avg {dat txt}
     }
+    pdb {
+        output/ref_aligned.pdb
+        output/target_aligned.pdb
+    }
 }
 
 inputs {

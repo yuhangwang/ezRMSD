@@ -35,13 +35,15 @@ proc ::rmsd::main {cfg} {
     ] results sel_rmsd
     ::dict set selections rmsd $sel_rmsd
 
+    # Save aligned structures
     if {[::dict get $cfg control save-pdb]} {
-        set out_pdbs [::rmsd::io::write::pdb [::dict get $cfg outputs prefix] [list $id1 $id2]]
+        set out_pdbs [::rmsd::io::write::pdb [::dict get $cfg outputs pdb] [list $id1 $id2]]
     } else {
         set out_pdbs {}
     }
     
 
+    # Save atom selections
     set out_sel [::dict create]
     foreach k [list align rmsd] {
         if {[::dict get $cfg control "save-selection-$k"]} {

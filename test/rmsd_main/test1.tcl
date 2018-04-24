@@ -16,8 +16,8 @@ proc test {} {
             "output/out1_avg.detail.txt" \
         ]\
         pdb [list \
-            "output/out1_0.pdb" \
-            "output/out1_1.pdb" \
+            "output/out1_ref_aligned.pdb" \
+            "output/out1_target_aligned.pdb" \
         ] \
         sel {} \
     ]

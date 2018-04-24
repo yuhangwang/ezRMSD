@@ -3,17 +3,20 @@
 ## ============================================
 ## Args
 ## ============================================
-## prefix (str): output file name
+## file_names ([str]): a list of output file names
 ## mol_ids (list): molecule IDs
 ## ============================================
 ## Returns (list): output file names
 ## ============================================
-proc ::rmsd::io::write::pdb {prefix mol_ids} {
+proc ::rmsd::io::write::pdb {file_names mol_ids} {
     set output {}
-    foreach id $mol_ids {
-        set file_name [format "%s_%d.pdb" $prefix $id]
-        lappend output $file_name
-        ::animate write pdb $file_name $id
+    if {[llength $file_names] != [llength $mol_ids]} {
+        puts "ERROR HINT: you must specify [llength $mol_ids] output pdb file names"
+    } else {
+        foreach id $mol_ids f_name $file_names {
+            ::animate write pdb $f_name $id
+            lappend output $f_name
+        }
     }
     return $output
 }
