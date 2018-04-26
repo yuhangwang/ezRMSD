@@ -28,6 +28,5 @@ proc ::rmsd::io::write::data {format_type prefix raw_data} {
     }
     set file_name [format "%s.%s" $prefix $ext]
 
-    puts ">>> $file_name"
     return [::_::io::save_list $file_name $data]
 }
