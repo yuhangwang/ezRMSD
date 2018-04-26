@@ -5,16 +5,14 @@ package require io_read_all
 proc test {} {
     set inputs {
         "input/p1.pdb"
-        "input/p2.pdb"
+    }
+    set expected {
+        "expected/part1.pdb"
     }
     set params {
         {
-            name "output/o1.pdb"
-            selection all
-        }
-        {
-            name "output/o2.pdb"
-            selection all
+            name "output/test2_o1.pdb"
+            selection "resid 2 and chain A"
         }
     }
 
@@ -26,7 +24,7 @@ proc test {} {
     
     set outputs [::rmsd::io::write::pdb $ids $params]
     
-    foreach f $outputs i $inputs {
+    foreach f $outputs i $expected {
         puts ">> $f $i"
         set expected [::_::io::read::all $i]
         set answer   [::_::io::read::all $f]

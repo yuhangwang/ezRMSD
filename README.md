@@ -22,8 +22,14 @@ outputs {
         avg {dat txt}
     }
     pdb {
-        output/ref_aligned.pdb
-        output/target_aligned.pdb
+        {
+            name output/ref_aligned.pdb
+            selection all
+        }
+        {
+            name output/target_aligned.pdb
+            selection all
+        }
     }
 }
 

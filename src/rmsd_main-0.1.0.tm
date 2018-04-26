@@ -33,11 +33,15 @@ proc ::rmsd::main {cfg} {
         [::dict keys [::dict get $cfg outputs calc]] \
         false \
     ] results sel_rmsd
+
     ::dict set selections rmsd $sel_rmsd
 
     # Save aligned structures
     if {[::dict get $cfg control save-pdb]} {
-        set out_pdbs [::rmsd::io::write::pdb [::dict get $cfg outputs pdb] [list $id1 $id2]]
+        set out_pdbs [::rmsd::io::write::pdb \
+            [list $id1 $id2]\
+            [::dict get $cfg outputs pdb] \
+        ]
     } else {
         set out_pdbs {}
     }
