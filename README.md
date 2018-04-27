@@ -43,13 +43,13 @@ inputs {
 }
 
 selections {
-    ref {
-        align all
-        rmsd  all
+    align {
+        ref    "chain A"
+        target "chain A"
     }
-    target {
-        align all
-        rmsd  all
+    rmsd {
+        ref    "protein and noh"
+        target "protein and noh"
     }
 }
 

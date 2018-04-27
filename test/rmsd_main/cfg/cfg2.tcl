@@ -17,13 +17,13 @@ inputs {
 }
 
 selections {
-    ref {
-        align all
-        rmsd  all
+    align {
+        ref    all
+        target all
     }
-    target {
-        align all
-        rmsd  all
+    rmsd {
+        ref    all
+        target all
     }
 }
 

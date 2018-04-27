@@ -6,8 +6,15 @@ outputs {
         avg {dat txt}
     }
     pdb {
-        output/out1_ref_aligned.pdb
-        output/out1_target_aligned.pdb
+        {
+            name output/out1_ref_aligned.pdb
+            selection all
+        }
+        
+        {
+            name output/out1_target_aligned.pdb
+            selection all
+        }
     }
 }
 
@@ -21,13 +28,13 @@ inputs {
 }
 
 selections {
-    ref {
-        align all
-        rmsd  all
+    align {
+        ref    all
+        target all
     }
-    target {
-        align all
-        rmsd  all
+    rmsd {
+        ref    all
+        target all
     }
 }
 

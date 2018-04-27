@@ -20,16 +20,16 @@ proc ::rmsd::main {cfg} {
     set selections [::dict create]
     if {[::dict get $cfg control align]} {
         ::dict set selections align [::rmsd::align \
-            $id1 [::dict get $cfg selections ref    align] \
-            $id2 [::dict get $cfg selections target align] \
+            $id1 [::dict get $cfg selections align ref] \
+            $id2 [::dict get $cfg selections align target] \
         ]
     } else {
         ::dict set selections align {}
     }
 
     lassign [::rmsd::calc::main \
-        $id1 [::dict get $cfg selections ref    rmsd] \
-        $id2 [::dict get $cfg selections target rmsd] \
+        $id1 [::dict get $cfg selections rmsd ref] \
+        $id2 [::dict get $cfg selections rmsd target] \
         [::dict keys [::dict get $cfg outputs calc]] \
         false \
     ] results sel_rmsd
