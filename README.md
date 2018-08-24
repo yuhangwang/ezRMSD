@@ -2,6 +2,9 @@
 Align and compute the RMSD between two structures with different/same number of residues.
 
 
+## Download
+The latest release can be downloaded from [here](https://github.com/yuhangwang/ezRMSD/releases/download/0.1.0/rmsd-app-0.1.0.zip).
+
 ## Feature
 automatically find the common atoms between two structures
 
