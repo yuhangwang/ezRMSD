@@ -16,6 +16,7 @@ automatically find the common atoms between two structures
     source load-rmsd-app.tcl
     ::rmsd::run config.tcl
     ```
+    Note: you need to keep `load-rmsd-app.tcl` and the folder `rmsd-app` in the same directory.
 
 ## Example 
 Example configuration file:
