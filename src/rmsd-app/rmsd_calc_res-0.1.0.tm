@@ -10,7 +10,7 @@
 ## update_beta = true (bool): (optional) if true, beta field will be used
 ##      to store RMSD values. Residues not selected will have zero beta values.
 ##=======================================================
-proc ::rmsd::calc::res {ref target common {do_align true} {update_beta true}} {
+proc ::rmsd::calc::res {ref target seltxt1 seltxt2 common {do_align true} {update_beta true}} {
     set id1 [$ref    molid]
     set id2 [$target molid]
 
@@ -41,8 +41,11 @@ proc ::rmsd::calc::res {ref target common {do_align true} {update_beta true}} {
                         $chain_id [::dict create $res_key $atom_name_list] \
                     ]
                     set res_seltxt [::rmsd::seltxt $sel_dict]
-                    set res_ref    [::atomselect $id1 "$res_seltxt"]
-                    set res_target [::atomselect $id2 "$res_seltxt"]
+                    # note: must intersect with $seltxt1 or $seltxt2 to avoid 
+                    # problems with alternative conformations (e.g. "altloc A B")
+                    # Steven Yuhang Wang 8/14/2018
+                    set res_ref    [::atomselect $id1 "($seltxt1) and ($res_seltxt)"]
+                    set res_target [::atomselect $id2 "($seltxt2) and ($res_seltxt)"]
                     set rmsd_value [format "%.3f" [::measure rmsd $res_target $res_ref]]
                     ::dict set res_rmsd_dict $res_key $rmsd_value
                     if {$update_beta} {

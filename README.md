@@ -7,8 +7,8 @@ automatically find the common atoms between two structures
 
 ## Usage
 ```
-package require rmsd
-::rmsd::run config.txt
+source load-rmsd-app.tcl
+::rmsd::run config.tcl
 ```
 
 ## Example 
@@ -60,3 +60,8 @@ control {
     save-selection-rmsd true
 }
 ```
+
+- `dat` means outputting data values.  
+- `txt` means outputting the common residues selected
+   Look for *_sel-align.txt, *_sel-align.str.txt, *sel-rmsd.str.txt  
+   and *sel-rmsd.txt files.

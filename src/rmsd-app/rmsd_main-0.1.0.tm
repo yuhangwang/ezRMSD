@@ -16,8 +16,8 @@
 proc ::rmsd::main {cfg} {
     set id1 [::vmd::io load {*}[::dict get $cfg inputs ref]]
     set id2 [::vmd::io load {*}[::dict get $cfg inputs target]]
-
     set selections [::dict create]
+    puts "[dict get $cfg selections align target]"
     if {[::dict get $cfg control align]} {
         ::dict set selections align [::rmsd::align \
             $id1 [::dict get $cfg selections align ref] \
@@ -26,6 +26,7 @@ proc ::rmsd::main {cfg} {
     } else {
         ::dict set selections align {}
     }
+    puts "===== done selections"
 
     lassign [::rmsd::calc::main \
         $id1 [::dict get $cfg selections rmsd ref] \

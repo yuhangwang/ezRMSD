@@ -21,19 +21,20 @@
 ##=======================================================
 proc ::rmsd::calc::main {id1 seltxt1 id2 seltxt2 rmsd_types {do_align true}} {
     set common [::rmsd::common_part $id1 $seltxt1 $id2 $seltxt2]
-    set seltxt [::rmsd::seltxt $common]
-    set ref    [::atomselect $id1 $seltxt]
-    set target [::atomselect $id2 $seltxt]
+    set seltxt_common [::rmsd::seltxt $common]
+    set ref    [::atomselect $id1 "($seltxt1) and ($seltxt_common)"]
+    set target [::atomselect $id2 "($seltxt2) and ($seltxt_common)"]
 
     set output [::dict create]
     foreach rmsd_type $rmsd_types {
         if {$rmsd_type eq "overall"} {
-            ::dict set output $rmsd_type [::rmsd calc all $ref $target $common $do_align]
+            ::dict set output $rmsd_type [::rmsd calc all $ref $target $do_align]
         } elseif {$rmsd_type eq "res"} {
-            ::dict set output $rmsd_type [::rmsd calc res $ref $target $common $do_align]
+            ::dict set output $rmsd_type [::rmsd calc res $ref $target \
+                $seltxt1 $seltxt2 $common $do_align]
         } elseif {$rmsd_type eq "avg"} {
             ::dict set output $rmsd_type [::rmsd::avg_by_chain \
-                [::rmsd calc res $ref $target $common $do_align]\ 
+                [::rmsd calc res $ref $target $seltxt1 $seltxt2 $common $do_align]\ 
             ]
         } else {
             puts "=================================================="

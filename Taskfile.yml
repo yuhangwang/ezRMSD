@@ -1,0 +1,56 @@
+# github.com/go-task/task
+
+version: '2'
+
+vars:
+  VERSION: 0.1.0
+
+tasks:
+  default:
+    cmds:
+      - task: release
+    silent: true
+
+  release:
+    cmds:
+        - cd src; zip -r ../release/rmsd-app-{{.VERSION}}.zip *
+
+  catall:
+    cmds:
+      - >
+        awk 'FNR==1{print ""}1' src/rmsd-0.1.0.tm
+        src/dict_compare_list-0.1.0.tm
+        src/filter-0.1.0.tm
+        src/fmap-0.1.0.tm
+        src/fold-0.1.0.tm
+        src/io_read_all-0.1.0.tm
+        src/io_read_lines-0.1.0.tm
+        src/io_save_list-0.1.0.tm
+        src/io_save_str-0.1.0.tm
+        src/list_compare-0.1.0.tm
+        src/math_avg-0.1.0.tm
+        src/nonblank-0.1.0.tm
+        src/rmsd_align-0.1.0.tm
+        src/rmsd_avg_by_chain-0.1.0.tm
+        src/rmsd_calc_all-0.1.0.tm
+        src/rmsd_calc_main-0.1.0.tm
+        src/rmsd_calc_res-0.1.0.tm
+        src/rmsd_collect_res_keys-0.1.0.tm
+        src/rmsd_common_atoms-0.1.0.tm
+        src/rmsd_common_chains-0.1.0.tm
+        src/rmsd_common_part-0.1.0.tm
+        src/rmsd_common_residues-0.1.0.tm
+        src/rmsd_d2l_chain-0.1.0.tm
+        src/rmsd_data_collapse-0.1.0.tm
+        src/rmsd_io_read_cfg-0.1.0.tm
+        src/rmsd_io_read_cfg_output-0.1.0.tm
+        src/rmsd_io_write_data-0.1.0.tm
+        src/rmsd_io_write_main-0.1.0.tm
+        src/rmsd_io_write_pdb-0.1.0.tm
+        src/rmsd_main-0.1.0.tm
+        src/rmsd_run-0.1.0.tm
+        src/rmsd_seltxt-0.1.0.tm
+        src/rmsd_shared_res_keys-0.1.0.tm
+        src/struct_set_intersect-0.1.0.tm
+        src/vmd_io_load-0.1.0.tm
+        > release/ezrmsd-1.0.0.tcl

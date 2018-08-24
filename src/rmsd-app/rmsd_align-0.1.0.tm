@@ -15,10 +15,14 @@ proc ::rmsd::align {id1 seltxt1 id2 seltxt2} {
         $id2 $seltxt2 \
     ] 
     set seltxt_common [::rmsd::seltxt $common]
-
-    set ref    [::atomselect $id1 "$seltxt_common"]
-    set target [::atomselect $id2 "$seltxt_common"]
+    set ref    [::atomselect $id1 "($seltxt1) and ($seltxt_common)"]
+    set target [::atomselect $id2 "($seltxt2) and ($seltxt_common)"]
     set target_all [::atomselect $id2 all]
+
+    # puts "ref:    [$ref get resid]"
+    # puts "target: [$target get resid]"
+    puts ">>>> ref:    [$ref num] atoms"
+    puts ">>>> target: [$target num] atoms"
     $target_all move [::measure fit $target $ref]
     $target_all delete
     $target delete

@@ -15,6 +15,7 @@ namespace eval ::rmsd {
     
     namespace eval io {
         namespace eval read {
+            namespace eval cfg {}
             namespace export cfg
             namespace ensemble create
         }
