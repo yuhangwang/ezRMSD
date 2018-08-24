@@ -9,10 +9,13 @@ The latest release can be downloaded from [here](https://github.com/yuhangwang/e
 automatically find the common atoms between two structures
 
 ## Usage
-```
-source load-rmsd-app.tcl
-::rmsd::run config.tcl
-```
+* unzip the released zip file
+* prepare a configuration file for your RMSD calculation (see [examples](https://github.com/yuhangwang/ezRMSD/tree/master/example))
+* open `VMD` TK Console and type the followings.
+    ```
+    source load-rmsd-app.tcl
+    ::rmsd::run config.tcl
+    ```
 
 ## Example 
 Example configuration file:
