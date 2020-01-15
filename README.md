@@ -72,3 +72,6 @@ control {
 - `txt` means outputting the common residues selected
    Look for *_sel-align.txt, *_sel-align.str.txt, *sel-rmsd.str.txt  
    and *sel-rmsd.txt files.
+- In the `outputs` `pdb` section, the first output is for the 
+  `reference` structure and the second for the `target` structure 
+   aligned to the reference. 
