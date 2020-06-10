@@ -3,12 +3,14 @@ Align and compute the RMSD between two structures with different/same number of 
 
 
 ## Download
-The latest release can be downloaded from [here](https://github.com/yuhangwang/ezRMSD/releases/download/0.1.0/rmsd-app-0.1.0.zip).
+The latest release can be downloaded from [here](https://github.com/yuhangwang/ezRMSD/releases/download/0.1.0/ez-rmsd-0.1.0.zip).
 
 
 ## Installation on Windows 10
-1. put the `ez-rmsd` folder and load-rmsd.tcl to this folder `C:/Program Files (x86)/University of Illinois/VMD/Mytclscripts`
-2. add the following lines in your `C:/Program Files (x86)/University of Illinois/VMD/vmd.rc` file.
+1. download the released version (zip file) from [here](https://github.com/yuhangwang/ezRMSD/releases/download/0.1.0/ez-rmsd-0.1.0.zip).
+2. extract the content of zip file.
+3. put the `ez-rmsd` folder and `load-rmsd-app.tcl` to this folder `C:/Program Files (x86)/University of Illinois/VMD/Mytclscripts`
+4. add the following lines in your `C:/Program Files (x86)/University of Illinois/VMD/vmd.rc` file.
     ```
     # ez-rmsd
     ::tcl::tm::path add [file join "C:/Program Files (x86)/University of Illinois/VMD/Mytclscripts" "ez-rmsd"]
@@ -26,7 +28,7 @@ automatically find the common atoms between two structures
 * open `VMD` TK Console and type the followings.
     ```
     source load-rmsd-app.tcl
-    ::rmsd::run config.tcl
+    ::rmsd::run example-config.tcl
     ```
     Note: you need to keep `load-rmsd-app.tcl` and the folder `rmsd-app` in the same directory.
 
