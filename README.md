@@ -10,7 +10,7 @@ The latest release can be downloaded from [here](https://github.com/yuhangwang/e
 1. download the released version (zip file) from [here](https://github.com/yuhangwang/ezRMSD/releases/download/0.1.0/ez-rmsd-0.1.0.zip).
 2. extract the content of zip file.
 3. put the `ez-rmsd` folder and `load-rmsd-app.tcl` to this folder `C:/Program Files (x86)/University of Illinois/VMD/Mytclscripts`
-4. add the following lines in your `C:/Program Files (x86)/University of Illinois/VMD/vmd.rc` file.
+4. add the following lines at the end of your `C:/Program Files (x86)/University of Illinois/VMD/vmd.rc` file.
     ```
     # ez-rmsd
     ::tcl::tm::path add [file join "C:/Program Files (x86)/University of Illinois/VMD/Mytclscripts" "ez-rmsd"]
